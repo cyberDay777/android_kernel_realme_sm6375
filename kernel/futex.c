@@ -2959,7 +2959,7 @@ static long futex_wait_restart(struct restart_block *restart)
 
 #if defined(OPLUS_FEATURE_SCHED_ASSIST) && defined(CONFIG_OPLUS_FEATURE_SCHED_ASSIST)
 	return (long)futex_wait(uaddr, restart->futex.flags,
-				restart->futex.val, tp, restart->futex.bitset, (u32)(restart->futex.uaddr2));
+				restart->futex.val, tp, restart->futex.bitset, (u32)(uintptr_t)(restart->futex.uaddr2));
 #else /* defined(OPLUS_FEATURE_SCHED_ASSIST) && defined(CONFIG_OPLUS_FEATURE_SCHED_ASSIST) */
 	return (long)futex_wait(uaddr, restart->futex.flags,
 				restart->futex.val, tp, restart->futex.bitset);
